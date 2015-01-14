@@ -65,7 +65,7 @@ public class RilevazioneService {
 	@GET
 	@Path("rilevazione/{id}")
 	@Produces("application/json")
-	public Response getRilevazione(@PathParam("id") Long id)
+	public Response getRilevazione(@PathParam("id") long id)
 	{
 		try
 		{
@@ -86,6 +86,29 @@ public class RilevazioneService {
 		}
 
 	}
+	
+	/*@GET
+	@Path("rilevazione/cartella/{id}")
+	@Produces("application/json")
+	public Response getRilevazioneCartella(@PathParam("id") int id)
+	{
+		try
+		{
+			//Get specific values
+			List<Rilevazione> _rilevazioni = rilevazioneDAO.findByNosologico(id , id, id);
+
+			if(_rilevazioni != null) {
+				return Response.status(200).entity(gson.toJson(_rilevazioni)).build(); 
+			} else {
+				return Response.status(404).entity("NOT FOUND").build();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return Response.status(500).entity("ERROR").build();
+		}
+	}*/
 	
 	@POST
 	@Path("/rilevazione")

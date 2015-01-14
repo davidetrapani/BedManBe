@@ -29,15 +29,15 @@ public class RilevazioneDAO extends GenericHibernateDao<Rilevazione, Long> {
 
 	// Completare con DAO specifici (non per id)
 	/*@SuppressWarnings("unchecked")
-	public List<Patient> findByName(String name) throws Exception
+	public List<Rilevazione> findByNosologico(int str_str, int anno, int cartella) throws Exception
 	{
 		try
 		{
-			StringBuilder strQuery = new StringBuilder("from Assistito p where p.ass_name = :name");
+			StringBuilder strQuery = new StringBuilder("select ril_id from scott.cc_rilevazioni ril where ril.ril_str_str = :str_str");
 			Query hqlQuery = getSession().createQuery(strQuery.toString());
-			hqlQuery.setString("name", name);
+			hqlQuery.setInteger("str_str", str_str);
 
-			return (ArrayList<Patient>) hqlQuery.list(); 
+			return (ArrayList<Rilevazione>) hqlQuery.list(); 
 		}
 		catch (HibernateException ex)
 		{

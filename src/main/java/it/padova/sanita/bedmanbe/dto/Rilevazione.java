@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 @SequenceGenerator(name="IdRilevazioneSequenceGen",sequenceName="ID_RIL_SEQ",allocationSize=1,initialValue=1)
 public class Rilevazione
 {	
-	public Rilevazione(Long ril_id, Long ril_str_str, Long ril_ric_anno, Long ril_ric_cartella,
+	public Rilevazione(Long ril_id, int ril_str_str, int ril_ric_anno, int ril_ric_cartella,
 			int ril_ass_ipca, 
 			String ril_tipo, String ril_val, String ril_note, Date ril_data,
 			String ril_ute_ins, Date ril_data_ins) {
@@ -39,11 +39,11 @@ public class Rilevazione
 	
 	private Long ril_id;
 
-	private Long ril_str_str;
+	private int ril_str_str;
 
-	private Long ril_ric_anno;
+	private int ril_ric_anno;
 
-	private Long ril_ric_cartella;
+	private int ril_ric_cartella;
 	
 	private int ril_ass_ipca;
 
@@ -73,35 +73,35 @@ public class Rilevazione
 	}
 
 	@Column(name="RIL_STR_STR", nullable = false, precision = 5, scale = 0)
-	public Long getRil_Str_Str()
+	public int getRil_Str_Str()
 	{
 		return ril_str_str;
 	}
 
-	public void setRil_Str_Str(Long ril_str_str)
+	public void setRil_Str_Str(int ril_str_str)
 	{
 		this.ril_str_str = ril_str_str;
 	}
 	
 	@Column(name="RIL_RIC_ANNO", nullable = false, precision = 4, scale = 0)
-	public Long getRil_Ric_Anno()
+	public int getRil_Ric_Anno()
 	{
 		return ril_ric_anno;
 	}
 
-	public void setRil_Ric_Anno(Long ril_ric_anno)
+	public void setRil_Ric_Anno(int ril_ric_anno)
 	{
 		this.ril_ric_anno = ril_ric_anno;
 	}
 	
 	@Column(name="RIL_RIC_CARTELLA", nullable = false, precision = 12, scale = 0)
-	public Long getRil_Ric_Cartella()
+	public int getRil_Ric_Cartella()
 	{
 		return ril_ric_cartella;
 	}
 
 	
-	public void setRil_Ric_Cartella(Long ril_ric_cartella)
+	public void setRil_Ric_Cartella(int ril_ric_cartella)
 	{
 		this.ril_ric_cartella = ril_ric_cartella;
 	}
