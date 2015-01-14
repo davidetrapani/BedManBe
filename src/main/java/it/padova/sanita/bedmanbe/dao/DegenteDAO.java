@@ -6,19 +6,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import oracle.jdbc.internal.OracleTypes;
-import java.sql.ResultSet;
-import com.google.gson.Gson;*/
+import org.hibernate.Query;*/
 
 import javax.transaction.Transactional;
-import it.padova.sanita.bedmanbe.dto.Rilevazione;
+
+//import oracle.jdbc.internal.OracleTypes;
+//import java.sql.ResultSet;
+
+
+
+
+//import com.google.gson.Gson;
+
+
+import it.padova.sanita.bedmanbe.dto.Degente;
 
 @Transactional()
-public class RilevazioneDAO extends GenericHibernateDao<Rilevazione, Long> {
+public class DegenteDAO extends GenericHibernateDao<Degente, Long> {
 
-	public RilevazioneDAO(){
-		super(Rilevazione.class);
+	public DegenteDAO(){
+		super(Degente.class);
 	}
 
 	// Completare con DAO specifici (non per id)

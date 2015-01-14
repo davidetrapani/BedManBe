@@ -21,5 +21,6 @@
     
     <mapping package="it.padova.sanita.bedmanbe.dto" />
     <mapping class="it.padova.sanita.bedmanbe.dto.Rilevazione" />
+    <mapping class="it.padova.sanita.bedmanbe.dto.Degente" />
   </session-factory>
 </hibernate-configuration>
