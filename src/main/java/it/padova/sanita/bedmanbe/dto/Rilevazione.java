@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 public class Rilevazione
 {	
 	public Rilevazione(Long ril_id, Long ril_str_str, Long ril_ric_anno, Long ril_ric_cartella,
-			Long ril_ass_ipca, 
+			int ril_ass_ipca, 
 			String ril_tipo, String ril_val, String ril_note, Date ril_data,
 			String ril_ute_ins, Date ril_data_ins) {
 		
@@ -45,7 +45,7 @@ public class Rilevazione
 
 	private Long ril_ric_cartella;
 	
-	private Long ril_ass_ipca;
+	private int ril_ass_ipca;
 
 	private String ril_tipo;
 	
@@ -107,11 +107,11 @@ public class Rilevazione
 	}
 	
 	@Column(name="RIL_ASS_IPCA", nullable = false, precision = 8, scale = 0)
-	public Long getRil_ass_ipca() {
+	public int getRil_ass_ipca() {
 		return ril_ass_ipca;
 	}
 
-	public void setRil_ass_ipca(Long ril_ass_ipca) {
+	public void setRil_ass_ipca(int ril_ass_ipca) {
 		this.ril_ass_ipca = ril_ass_ipca;
 	}
 
@@ -152,7 +152,7 @@ public class Rilevazione
 		this.ril_data = ril_data;
 	}
 
-	@Column(name = "RIL_UTE_INS", nullable = true, length = 12)
+	@Column(name = "RIL_UTE_INS", nullable = false, length = 12)
 	public String getRil_ute_ins() {
 		return ril_ute_ins;
 	}
