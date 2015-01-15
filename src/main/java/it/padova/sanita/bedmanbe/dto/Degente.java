@@ -1,16 +1,17 @@
 package it.padova.sanita.bedmanbe.dto;
 
+import java.util.Date;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 /*import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;*/
 import javax.persistence.Table;
-
-import java.util.Date;
-
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -66,6 +67,9 @@ public class Degente
 	
 	private String deg_desc_rep_ass;
 
+	@OneToMany(mappedBy="DEG_ID")
+	private Set<Rilevazione> rilevazioni;
+	
 	@Id
 	@Column(name="DEG_ID", nullable = false, unique=true)
 	public Long getDeg_Id() {

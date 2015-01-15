@@ -11,7 +11,15 @@ import oracle.jdbc.internal.OracleTypes;
 import java.sql.ResultSet;
 import com.google.gson.Gson;*/
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+
+import it.padova.sanita.bedmanbe.dto.Degente;
 import it.padova.sanita.bedmanbe.dto.Rilevazione;
 
 @Transactional()
@@ -22,14 +30,15 @@ public class RilevazioneDAO extends GenericHibernateDao<Rilevazione, Long> {
 	}
 
 	// Completare con DAO specifici (non per id)
-	/*@SuppressWarnings("unchecked")
-	public List<Rilevazione> findByNosologico(int str_str, int anno, int cartella) throws Exception
+	@SuppressWarnings("unchecked")
+	public List<Rilevazione> findByDegIdDate(Long degId, int dataRil) throws Exception
 	{
 		try
 		{
-			StringBuilder strQuery = new StringBuilder("select ril_id from scott.cc_rilevazioni ril where ril.ril_str_str = :str_str");
+			StringBuilder strQuery = new StringBuilder("from Rilevazione ril where ril.degente =:degId and ril.ril_data>= to_date(to_date('01011970','ddmmyyyy') + :dataRil/86400 ) and ril.ril_data<(to_date(to_date('01011970','ddmmyyyy') + :dataRil/86400 )+1)");
 			Query hqlQuery = getSession().createQuery(strQuery.toString());
-			hqlQuery.setInteger("str_str", str_str);
+			hqlQuery.setLong("degId", degId);
+			hqlQuery.setInteger("dataRil", dataRil);
 
 			return (ArrayList<Rilevazione>) hqlQuery.list(); 
 		}
@@ -37,7 +46,7 @@ public class RilevazioneDAO extends GenericHibernateDao<Rilevazione, Long> {
 		{
 			throw new Exception(ex); 
 		}
-	}*/
+	}
 	
 	// Completare con interfacce a procedure db Oracle
 	// Commento su segnalazione warning di Eclipse Luna

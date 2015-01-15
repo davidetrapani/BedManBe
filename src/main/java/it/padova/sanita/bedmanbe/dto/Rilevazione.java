@@ -1,13 +1,17 @@
 package it.padova.sanita.bedmanbe.dto;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,7 +23,7 @@ public class Rilevazione
 	public Rilevazione(Long ril_id, int ril_str_str, int ril_ric_anno, int ril_ric_cartella,
 			int ril_ass_ipca, 
 			String ril_tipo, String ril_val, String ril_note, Date ril_data,
-			String ril_ute_ins, Date ril_data_ins) {
+			String ril_ute_ins, Date ril_data_ins, String ril_reparto_ass) {
 		
 		this.ril_id = ril_id;
 		this.ril_str_str = ril_str_str;
@@ -32,6 +36,7 @@ public class Rilevazione
 		this.ril_data = ril_data;
 		this.ril_ute_ins = ril_ute_ins;
 		this.ril_data_ins = ril_data_ins;
+		this.ril_reparto_ass = ril_reparto_ass;
 	}
 	
 	public Rilevazione() {
@@ -59,6 +64,12 @@ public class Rilevazione
 	
 	private Date ril_data_ins;
 	
+	private String ril_reparto_ass;
+	
+	//private Long deg_Id;
+	
+	private Degente degente;
+
 	@Id
 	@Column(name="RIL_ID", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IdRilevazioneSequenceGen")
@@ -171,4 +182,32 @@ public class Rilevazione
 		this.ril_data_ins = ril_data_ins;
 	}
 	
+	@Column(name="RIL_REPARTO_ASS", nullable = true, length = 6)
+	public String getRil_Reparto_Ass() {
+		return ril_note;
+	}
+
+	public void setRil_Reparto_Ass(String ril_reparto_ass) {
+		this.ril_reparto_ass = ril_reparto_ass;
+	}
+	
+//	@Column(name="DEG_ID")
+//	public Long getDeg_Id() {
+//		return deg_Id;
+//	}
+//
+//	public void setDeg_Id(Long deg_Id) {
+//		this.deg_Id = deg_Id;
+//	}
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="DEG_ID")
+	public Degente getDegente() {
+		return degente;
+	}
+
+	public void setDegente(Degente degente) {
+		this.degente = degente;
+	}
+
 }
