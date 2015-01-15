@@ -1,12 +1,12 @@
 package it.padova.sanita.bedmanbe.dao;
 
-/*import java.sql.CallableStatement;
+import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;*/
+import org.hibernate.Query;
 
 import javax.transaction.Transactional;
 
@@ -29,22 +29,22 @@ public class DegenteDAO extends GenericHibernateDao<Degente, Long> {
 	}
 
 	// Completare con DAO specifici (non per id)
-	/*@SuppressWarnings("unchecked")
-	public List<Rilevazione> findByNosologico(int str_str, int anno, int cartella) throws Exception
+	@SuppressWarnings("unchecked")
+	public List<Degente> findByWard(String ward) throws Exception
 	{
 		try
 		{
-			StringBuilder strQuery = new StringBuilder("select ril_id from scott.cc_rilevazioni ril where ril.ril_str_str = :str_str");
+			StringBuilder strQuery = new StringBuilder("from Degente deg where deg.deg_reparto_ass = :ward");
 			Query hqlQuery = getSession().createQuery(strQuery.toString());
-			hqlQuery.setInteger("str_str", str_str);
+			hqlQuery.setString("ward", ward);
 
-			return (ArrayList<Rilevazione>) hqlQuery.list(); 
+			return (ArrayList<Degente>) hqlQuery.list(); 
 		}
 		catch (HibernateException ex)
 		{
 			throw new Exception(ex); 
 		}
-	}*/
+	}
 	
 	// Completare con interfacce a procedure db Oracle
 	// Commento su segnalazione warning di Eclipse Luna

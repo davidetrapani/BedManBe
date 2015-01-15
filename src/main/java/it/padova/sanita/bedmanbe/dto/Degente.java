@@ -2,6 +2,7 @@ package it.padova.sanita.bedmanbe.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 /*import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,11 +20,12 @@ public class Degente
 {	
 	
 	
-	public Degente(int deg_stanza, int deg_letto, int deg_str_str,
+	public Degente(long deg_id, int deg_stanza, int deg_letto, int deg_str_str,
 			int deg_ric_anno, int deg_ric_cartella, int deg_ass_ipca,
 			String deg_ass_cogn, String deg_ass_nome, Date deg_ass_datna,
-			String deg_reparto_ass) {
+			String deg_reparto_ass, String deg_desc_rep_ass) {
 		
+		this.deg_id = deg_id;
 		this.deg_stanza = deg_stanza;
 		this.deg_letto = deg_letto;
 		this.deg_str_str = deg_str_str;
@@ -34,10 +36,13 @@ public class Degente
 		this.deg_ass_nome = deg_ass_nome;
 		this.deg_ass_datna = deg_ass_datna;
 		this.deg_reparto_ass = deg_reparto_ass;
+		this.deg_desc_rep_ass = deg_desc_rep_ass;
 	}
 
 	public Degente() {
 	}
+	
+	private Long deg_id;
 	
 	private int deg_stanza;
 
@@ -58,7 +63,19 @@ public class Degente
 	private Date deg_ass_datna;
 	
 	private String deg_reparto_ass;
+	
+	private String deg_desc_rep_ass;
 
+	@Id
+	@Column(name="DEG_ID", nullable = false, unique=true)
+	public Long getDeg_Id() {
+		return deg_id;
+	}
+	 
+	public void setDeg_Id(Long deg_id) {
+		this.deg_id = deg_id;
+	}
+	
 	@Column(name="DEG_STANZA", nullable = false, precision = 5, scale = 0)
 	public int getDeg_stanza() {
 		return deg_stanza;
@@ -149,7 +166,14 @@ public class Degente
 	public void setDeg_reparto_ass(String deg_reparto_ass) {
 		this.deg_reparto_ass = deg_reparto_ass;
 	}
-	
-	
+
+	@Column(name="DEG_DESC_REP_ASS", nullable = false, length = 60)
+	public String getDeg_desc_rep_ass() {
+		return deg_desc_rep_ass;
+	}
+
+	public void setDeg_desc_rep_ass(String deg_desc_rep_ass) {
+		this.deg_desc_rep_ass = deg_desc_rep_ass;
+	}
 	
 }
