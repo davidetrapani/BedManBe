@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="CC_RILEVAZIONI", schema="scott")
+@Table(name="CC_RILEVAZIONI", schema="davide")
 @SequenceGenerator(name="IdRilevazioneSequenceGen",sequenceName="ID_RIL_SEQ",allocationSize=1,initialValue=1)
 public class Rilevazione
 {	
@@ -36,7 +36,7 @@ public class Rilevazione
 		this.ril_data = ril_data;
 		this.ril_ute_ins = ril_ute_ins;
 		this.ril_data_ins = ril_data_ins;
-		this.ril_reparto_ass = ril_reparto_ass;
+		this.ril_reparto_ass=ril_reparto_ass;
 	}
 	
 	public Rilevazione() {
@@ -184,21 +184,12 @@ public class Rilevazione
 	
 	@Column(name="RIL_REPARTO_ASS", nullable = true, length = 6)
 	public String getRil_Reparto_Ass() {
-		return ril_note;
+		return this.ril_reparto_ass;
 	}
 
 	public void setRil_Reparto_Ass(String ril_reparto_ass) {
-		this.ril_reparto_ass = ril_reparto_ass;
+		this.ril_reparto_ass=ril_reparto_ass;
 	}
-	
-//	@Column(name="DEG_ID")
-//	public Long getDeg_Id() {
-//		return deg_Id;
-//	}
-//
-//	public void setDeg_Id(Long deg_Id) {
-//		this.deg_Id = deg_Id;
-//	}
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="DEG_ID")
